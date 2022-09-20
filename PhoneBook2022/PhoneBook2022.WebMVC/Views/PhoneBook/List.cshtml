@@ -1,0 +1,38 @@
+﻿@model PhoneBook2022.WebMVC.Models.PhoneBookModel
+
+@{
+    ViewData["Title"] = "View1";
+    int i = 0;
+}
+
+<h1>View1</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Naam
+            </th>
+            <th>
+                Telefoonnummer
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+              @Html.ActionLink(item.FullName,"Details","PhoneBook",new {@id = i})
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelephoneNumber)
+            </td>           
+        </tr>
+        i++;
+}
+    </tbody>
+</table>

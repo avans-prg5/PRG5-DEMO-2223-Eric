@@ -36,6 +36,18 @@ namespace PhoneBook.Domain
                 AllPersons[index].TelephoneNumber = phoneNumber;
             }
         }
+        /// <summary>
+        /// This method returns ONE person from the phonebook... however... we DON"T have
+        /// id's... so all we can use is Index... and that changes when sorting...
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public Person GetById(int Id)
+        {
+            if (Id < 0 && Id >= AllPersons.Count)
+                throw new IndexOutOfRangeException();
+            return AllPersons[Id];
+        }
 
         /// <summary>
         /// sorteren op achternaam
